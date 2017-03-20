@@ -34,7 +34,7 @@ void setup() {
     // Send SMS
     // Not preferred, slower transmittals and costs more
     if (hologram.sendSMS("+18001235555", "Oldschool SMS")) {
-      Serial.println(F("Cloud SMS Sent"));
+      Serial.println(F("Oldschool SMS Sent"));
     }
 
     delay(4000);

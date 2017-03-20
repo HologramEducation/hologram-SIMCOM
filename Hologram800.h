@@ -6,8 +6,8 @@
  * @date       Mar 2017
 **/
 
-#ifndef __HOLOGRAM800_H__
-#define __HOLOGRAM800_H__
+#ifndef __Hologram800_H__
+#define __Hologram800_H__
 
 #include "Arduino.h"
 #include <SoftwareSerial.h>

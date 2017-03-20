@@ -103,10 +103,10 @@ bool Hologram800::sendSMS(char* phoneNum, char* message) {
 }
 
 bool Hologram800::sendSMStoCloud(char* message) {
-  return HOLOGRAM800::sendSMS("+447937405250", message);
+  return Hologram800::sendSMS("+447937405250", message);
 }
 
-void HOLOGRAM800::serialDebug(void) {
+void Hologram800::serialDebug(void) {
   // Serial.println("serialDebug called");
   while (serialHologram.available()) {
     Serial.write(serialHologram.read());
