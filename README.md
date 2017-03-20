@@ -27,4 +27,4 @@ This library requires an activated Hologram SIM.
 2. Under that device's details, go to configuration tab and generate Router Credentials.
 3. Use the Shared ID and Shared Key values in your sketch.
 
-See the [KitchenSink](https://github.com/hologram-io/Hologram-SIM800/examples/KitchenSink/KitchenSink.ino) example sketch for more detail on how the library is used.
+See the [KitchenSink](https://github.com/hologram-io/hologram-SIM800/blob/master/examples/KitchenSink/KitchenSink.ino) example sketch for more detail on how the library is used.
