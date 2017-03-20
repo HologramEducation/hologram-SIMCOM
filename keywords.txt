@@ -1,0 +1,25 @@
+#######################################
+# Syntax Color Map For Hologram_SIMCOM_SIM800
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Hologram800	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+init	KEYWORD2
+sendData	KEYWORD2
+sendCloudSMS	KEYWORD2
+sendSMS	KEYWORD2
+sendSMStoCloud	KEYWORD2
+serialDebug	KEYWORD2
+serialHologram	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
