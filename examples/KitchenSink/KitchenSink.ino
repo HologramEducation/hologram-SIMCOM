@@ -27,13 +27,13 @@ void setup() {
 
     // Send soft SMS through TCP
     // Charges as data, not SMS (save $$)
-    if (hologram.sendCloudSMS("+13128338709", "Soft SMS, how cool!")) {
+    if (hologram.sendCloudSMS("+18001235555", "Soft SMS, how cool!")) {
       Serial.println(F("Cloud SMS Sent"));
     }
 
     // Send SMS
     // Not preferred, slower transmittals and costs more
-    if (hologram.sendSMS("+13128338709", "Oldschool SMS")) {
+    if (hologram.sendSMS("+18001235555", "Oldschool SMS")) {
       Serial.println(F("Cloud SMS Sent"));
     }
 
