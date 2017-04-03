@@ -33,6 +33,11 @@ void Hologram800::begin(int baud) {
     initialized = false;
   }
 
+  // Make sure modem status is reset
+  if (sendCommandWait("AT+CIPSTATUS\r\n", "PDP DEACT", 5)) {
+    Hologram800::closeTCP();
+  }
+
   // Set APN for data transmittal
   // Check if state equals 'IP INITIAL'
   // If it does then APN needs to be set
