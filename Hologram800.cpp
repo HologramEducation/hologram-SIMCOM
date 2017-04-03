@@ -9,26 +9,28 @@
 #include "Arduino.h"
 #include "Hologram800.h"
 
-bool Hologram800::init() {
+void Hologram800::begin(int baud) {
   // Start serials
-  Serial.begin(9600);
+  _baud = baud;
+  Serial.begin(_baud);
+  serialHologram.begin(_baud);
 
   // Check if module is available for commands
   if (!sendCommandWait("AT\r\n", "OK\r\n", 10)) {
     Serial.println(F("ERROR no modem serial available"));
-    return false;
+    initialized = false;
   }
 
   // Set Phone Functionality to full
   if (!sendCommandWait("AT+CFUN=1\r\n", "OK", 10)) {
     Serial.println(F("ERROR setting modem mode"));
-    return false;
+    initialized = false;
   }
 
   // Set SMS mode to Text
   if (!sendCommandWait("AT+CMGF=1\r\n", "OK", 5)) {
     Serial.println(F("ERROR setting SMS mode"));
-    return false;
+    initialized = false;
   }
 
   // Set APN for data transmittal
@@ -38,11 +40,11 @@ bool Hologram800::init() {
     sendCommandWait("AT+CSTT=\"hologram\"\r\n", "OK", 5);
     if (!sendCommandWait("AT+CSTT?\r\n", "hologram", 5) && !sendCommandWait("AT+CIPSTATUS\r\n", "START", 5)) {
       Serial.println(F("ERROR APN not set correctly or module state not IP START"));
-      return false;
+      initialized = false;
     }
   }
 
-  return true;
+  initialized = true;
 }
 
 bool Hologram800::sendData(const char* data) {
@@ -117,6 +119,11 @@ void Hologram800::serialDebug(void) {
 }
 
 bool Hologram800::openTCP() {
+  // Check if modem has initialized
+  if (!initialized) {
+    Hologram800::begin(_baud);
+  }
+
   // Check is state equals IP INITIAL
   // If it does then APN needs to be set
   if (sendCommandWait("AT+CIPSTATUS\r\n", "INITIAL", 2)) {

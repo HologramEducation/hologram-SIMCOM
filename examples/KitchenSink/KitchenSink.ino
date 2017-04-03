@@ -12,7 +12,9 @@ void setup() {
   Serial.begin(9600);
   while(!Serial);
 
-  if(hologram.init()) {
+  hologram.begin(9600);
+
+  if(hologram.initialized) {
 
     // Send data to Hologram's Cloud
     if (hologram.sendData("This is some awesome data!")) {

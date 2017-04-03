@@ -17,27 +17,22 @@ class Hologram800 {
   Hologram800(
     const int txPin,
     const int rxPin,
-    const char* deviceId,
-    const char* deviceKey)
-  :serialHologram(txPin, rxPin) {
-    _rxPin = rxPin;
-    _txPin = txPin;
-    _deviceId = deviceId;
-    _deviceKey = deviceKey;
-
-    Serial.begin(9600);
-    serialHologram.begin(9600);
-  }
-  bool init();
+    char* deviceId,
+    char* deviceKey)
+  :serialHologram(txPin, rxPin){
+      _deviceId = deviceId;
+      _deviceKey = deviceKey;
+  };
+  void begin(const int baud);
   bool sendData(const char* data);
   bool sendCloudSMS(char* phoneNum, char* message);
   bool sendSMS(char* phoneNum, char* message);
   bool sendSMStoCloud(char* message);
   void serialDebug(void);
+  bool initialized = false;
   SoftwareSerial serialHologram;
  private:
-  int _rxPin;
-  int _txPin;
+  int _baud;
   char* _deviceId;
   char* _deviceKey;
   bool openTCP();
