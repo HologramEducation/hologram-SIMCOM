@@ -9,7 +9,7 @@
 #include "Arduino.h"
 #include "Hologram800.h"
 
-void Hologram800::begin(int baud) {
+void Hologram800::begin(const int baud) {
   // Start serials
   _baud = baud;
   Serial.begin(_baud);
@@ -19,6 +19,13 @@ void Hologram800::begin(int baud) {
   if (!sendCommandWait("AT\r\n", "OK\r\n", 10)) {
     Serial.println(F("ERROR no modem serial available"));
     initialized = false;
+  }
+
+  // Synchronize baud-rate
+  char baud_command[16];
+  snprintf(baud_command, sizeof(baud_command), "AT+IPR=\"%i\"\r\n", _baud);
+  if (!sendCommandWait(baud_command, "OK\r\n", 5)) {
+    Serial.println(F("ERROR syncing baud rates"));
   }
 
   // Set Phone Functionality to full
