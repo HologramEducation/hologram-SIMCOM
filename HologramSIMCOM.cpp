@@ -310,12 +310,13 @@ void HologramSIMCOM::_checkIfInbound() {
       }
     }
 
+    // this is a little wonky, need to override _MODEMSTATE to execute
     _MODEMSTATE = 1;
     _sendResponse("OK");
     _MODEMSTATE = 0;
 
   } else if(_SERIALBUFFER.indexOf("+CMTI:") != -1) {
-    //while ( serialHologram.available() > 0 );
+    // this is a little wonky, need to override _MODEMSTATE to execute
     _MODEMSTATE = 1;
     _writeCommand("AT+CMGR=1\r\n",5,"+CMGR: ", "ERROR");
     //delay(200);
