@@ -26,7 +26,7 @@ bool HologramSIMCOM::begin(const int baud) {
   bool initiated = false;
 
   // Start serials
-  if(!Serial) { // is user did not begin Serial then we will
+  if(!Serial) { // if user did not begin Serial then we will
     Serial.begin(baud);
     while(!Serial); // wait for Serial to be ready
   }
@@ -50,7 +50,7 @@ bool HologramSIMCOM::begin(const int baud) {
       break;
     }
 
-    // Check is SIM is ready
+    // Check if SIM is ready
     if(_writeCommand("AT+CPIN?\r\n", 5, "OK", "ERROR") != 2) {
       Serial.println(F("ERROR: begin() failed at +CPIN"));
       break;

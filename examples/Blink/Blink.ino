@@ -23,7 +23,7 @@ void setup() {
     while(!Serial);
 
     Hologram.debug();
-    bool cellConnected = Hologram.begin(19200, 8888); // set baud to 9600 and start server on port 8888
+    bool cellConnected = Hologram.begin(19200, 8888); // set baud to 19200 and start server on port 8888
     if(cellConnected) {
         Serial.println(F("Cellular is connected"));
     } else {
