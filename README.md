@@ -91,6 +91,9 @@ void loop() {
     // Send a String to the cloud
     Hologram.send(String("Hello World"));
     
+    // Send a JSON string that can be parsed by the Hologram Router
+    Hologram.send("{\"desc\":\"sensor-1\",\"temp\":78,\"hum\":20}");
+    
     // Publish to one topic
     Hologram.send("Hello World", "cool-topic");
     
@@ -216,6 +219,7 @@ void loop() {
 
 - Expose ability to send modem commands along with a timeout and response to wait for.
 - Reduce or eliminate the dependency on `String`.
+- Make send and receive functionality non-blocking.
 - Make connecting more efficient (add sleep functionality and ability to control GPRS state)
 - Add support for modules with integrated GPS
 - Add support for modules with integrated BLE
