@@ -1,10 +1,9 @@
-#include "HologramSIMCOM.h"
+#include <HologramSIMCOM.h>
 
 #define RX_PIN 8 //SIM800 RX connected to pin D8
 #define TX_PIN 7 //SIM800 TX connected to pin D7
 #define RESET_PIN 10 //SIM800 reset connected to pin D10
-#define HOLO_ID "****"  //replace w/your SIM id
-#define HOLO_KEY "****" //replace w/your SIM key
+#define HOLO_KEY "********" //replace w/your SIM key
 #define LED_PIN 13 //led
 #define BTN_PIN 12 //push button
 
@@ -16,7 +15,7 @@ unsigned lastSend = millis();
 unsigned lastTest = millis();
 int sendInterval = 120; // send stats every 2 minutes
 
-HologramSIMCOM Hologram(TX_PIN, RX_PIN, RESET_PIN, HOLO_ID, HOLO_KEY); // Instantiate Hologram
+HologramSIMCOM Hologram(TX_PIN, RX_PIN, RESET_PIN, HOLO_KEY); // Instantiate Hologram
 
 void setup() {
     Serial.begin(19200);

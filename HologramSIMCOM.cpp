@@ -195,8 +195,7 @@ int HologramSIMCOM::cellStrength() {
 bool HologramSIMCOM::send(String data) {
   // modify data for TCP transmittal
   data.replace("\"","\\\"");
-  data = "{\"s\": \"" + String(_DEVICEID)
-         + "\", \"c\": \"" + String(_DEVICEKEY)
+  data = "{\"k\": \"" + String(_DEVICEKEY)
          + "\", \"d\": \"" + data + "\"}\r\n";
 
   bool sent = _sendMessage(data);
@@ -211,8 +210,7 @@ bool HologramSIMCOM::send(char* data) {
 bool HologramSIMCOM::send(String data, const String topics) {
   // modify data for TCP transmittal
   data.replace("\"","\\\"");
-  data = "{\"s\": \"" + String(_DEVICEID)
-         + "\", \"c\": \"" + String(_DEVICEKEY)
+  data = "{\"k\": \"" + String(_DEVICEKEY)
          + "\", \"d\": \"" + data
          + "\", \"t\": \"" + topics + "\"}\r\n";
 

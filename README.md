@@ -26,28 +26,27 @@ A [Hologram account and SIM Card](https://hologram.io/store/) is required to use
 ## Getting Started
 
 1. Activate a SIM card through [Hologram's new device form](https://dashboard.hologram.io/activate).
-2. Under that device's details, go to Configuration tab and generate Router Credentials.
+2. Under that device's details, go to Configuration tab and generate Router Credentials, copy the Device Key.
 3. Open The [KitchenSink](https://github.com/hologram-io/hologram-SIMCOM/blob/master/examples/KitchenSink/KitchenSink.ino) example, IDE -> File -> Examples -> Hologram SIMCOM -> KitchenSink.
-4. Use the Shared ID and Shared Key values in your sketch.
+4. In your sketch define the Device Key we got from the Router Credentials modal.
 5. Connect the TX, RX, & Reset pins.
 6. Upload sketch to your Arduino, open the Serial Monitor and watch the magic happen.
 
 ## Reference
 
-### HologramSIMCOM Hologram(rx,tx,reset,id,key)
+### HologramSIMCOM Hologram(rx,tx,reset,key)
 
 Required. This goes before your start function. It instantiates HologramSIMCOM and gives the library the info it needs to connect to the device and Hologram's cloud.
 
 ```c
-#include "HologramSIMCOM.h"
+#include <HologramSIMCOM.h>
 
 #define RX_PIN 8
 #define TX_PIN 7
 #define RESET_PIN 10
-#define HOLO_ID "****"
-#define HOLO_KEY "****"
+#define HOLO_KEY "********"
 
-HologramSIMCOM Hologram(TX_PIN, RX_PIN, RESET_PIN, HOLO_ID, HOLO_KEY);
+HologramSIMCOM Hologram(TX_PIN, RX_PIN, RESET_PIN, HOLO_KEY);
 ```
 
 ### .begin(baud, port)

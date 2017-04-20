@@ -16,9 +16,8 @@ class HologramSIMCOM {
 public:
 
     // Pre-setup - set globals -----------------------------------------
-    HologramSIMCOM(const int txPin,const int rxPin,const int resetPin,const char* deviceId,const char* deviceKey)
+    HologramSIMCOM(const int txPin,const int rxPin,const int resetPin,const char* deviceKey)
             :serialHologram(txPin, rxPin){
-        _DEVICEID = deviceId;
         _DEVICEKEY = deviceKey;
         _RESETPIN = resetPin;
     };
@@ -46,7 +45,6 @@ public:
 
 private:
     // Globals ------------------------------------------------------------
-    const char* _DEVICEID; // Hologram's Device ID
     const char* _DEVICEKEY; // Hologram's Device Key
     int _RESETPIN;
     int _SERVERPORT; // Modem's server port
