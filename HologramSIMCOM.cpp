@@ -225,7 +225,7 @@ bool HologramSIMCOM::send(char* data, const char* topics) {
 
 bool HologramSIMCOM::sendSMS(const String phoneNum, String message) {
   // modify data for TCP transmittal
-  message = "S" + String(_DEVICEID) + String(_DEVICEKEY)
+  message = "S" + String(_DEVICEKEY)
             + phoneNum + " " + message + "\r\n";
 
   bool sent = _sendMessage(message);

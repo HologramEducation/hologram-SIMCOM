@@ -12,7 +12,6 @@ int ledSwitch = 0;
 unsigned ledStart;
 unsigned ledLongest = 0;
 unsigned lastSend = millis();
-unsigned lastTest = millis();
 int sendInterval = 120; // send stats every 2 minutes
 
 HologramSIMCOM Hologram(TX_PIN, RX_PIN, RESET_PIN, HOLO_KEY); // Instantiate Hologram
@@ -21,6 +20,7 @@ void setup() {
     Serial.begin(19200);
     while(!Serial);
 
+    // Start modem and connect to Hologram's global network
     Hologram.debug();
     bool cellConnected = Hologram.begin(19200, 8888); // set baud to 19200 and start server on port 8888
     if(cellConnected) {
@@ -39,14 +39,14 @@ void setup() {
 void loop() {
     Hologram.debug();
 
+    // Toggle LED with physical button press
     if(digitalRead(BTN_PIN) == HIGH) {
         toggleLed();
         while(digitalRead(BTN_PIN) == HIGH); // wait until user stops pressing button
     }
 
-    sendLedData();
-    testSignalStrength();
-
+    // Check for inbound messages
+    // Toggle LED through inbound messages
     if(Hologram.availableMessage() > 0) {
         String message = Hologram.readMessage();
 
@@ -57,6 +57,9 @@ void loop() {
             Serial.println(message);
         }
     }
+
+    // Send collected data of LED stats
+    sendLedData();
 }
 
 void toggleLed() {
@@ -94,19 +97,7 @@ void sendLedData() {
 
         // send into space
         Hologram.send(data, String("LED_STATS, HACKERBOX"));
-        Hologram.sendSMS("+13128338709", "LED data is in the cloud ☁️");
-    }
-}
-
-void testSignalStrength() {
-    unsigned m = millis();
-    if(m - lastTest > (sendInterval * 1000)) {
-        // Reset everything
-        lastTest = m;
-        int strength = Hologram.cellStrength();
-
-        Serial.print(F("Signal stregth: "));
-        Serial.println(strength);
+        //Hologram.sendSMS("+13125556666", "Sending SMS, your LED data is in the cloud ☁️");
     }
 }
 
