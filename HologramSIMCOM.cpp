@@ -42,6 +42,11 @@ bool HologramSIMCOM::begin(const int baud) {
       break;
     }
 
+    if(_DEBUG == 1) {
+      _writeCommand("AT+CIPSTATUS\r\n", 5, "STATE:", "ERROR");
+      Serial.write("\r\n");
+    }
+
     // Synchronize baud-rate
     char baud_command[20];
     snprintf(baud_command, sizeof(baud_command), "AT+IPR=%i\r\n", baud);
@@ -71,11 +76,21 @@ bool HologramSIMCOM::begin(const int baud) {
     // Modem might be in a bad state, shut it down just in case
     _writeCommand("AT+CIPSHUT\r\n", 65, "SHUT OK", "ERROR"); // no need to break
 
+      if(_DEBUG == 1) {
+          _writeCommand("AT+CIPSTATUS\r\n", 5, "STATE:", "ERROR");
+          Serial.write("\r\n");
+      }
+
     // check GPRS Status
     if(_writeCommand("AT+CGATT?\r\n", 10, "OK", "ERROR") != 2) {
       Serial.println(F("ERROR: begin() failed at +CGATT"));
       break;
     }
+
+      if(_DEBUG == 1) {
+          _writeCommand("AT+CIPSTATUS\r\n", 5, "STATE:", "ERROR");
+          Serial.write("\r\n");
+      }
 
     // Set connection mode to multi
     if(_writeCommand("AT+CIPMUX=1\r\n", 1, "OK", "ERROR") != 2) {
@@ -89,17 +104,32 @@ bool HologramSIMCOM::begin(const int baud) {
       break;
     }
 
+      if(_DEBUG == 1) {
+          _writeCommand("AT+CIPSTATUS\r\n", 5, "STATE:", "ERROR");
+          Serial.write("\r\n");
+      }
+
     // Bring up wireless connection
     if(_writeCommand("AT+CIICR\r\n", 85, "OK", "ERROR") != 2) {
       Serial.println(F("ERROR: begin() failed at +CIICR"));
       break;
     }
 
+      if(_DEBUG == 1) {
+          _writeCommand("AT+CIPSTATUS\r\n", 5, "STATE:", "ERROR");
+          Serial.write("\r\n");
+      }
+
     // Get local IP address
     if(_writeCommand("AT+CIFSR\r\n", 1, ".", "ERROR") != 2) {
       Serial.println(F("ERROR: begin() failed at +CIFSR"));
       break;
     }
+
+      if(_DEBUG == 1) {
+          _writeCommand("AT+CIPSTATUS\r\n", 5, "STATE:", "ERROR");
+          Serial.write("\r\n");
+      }
 
     initiated = true;
     break;
