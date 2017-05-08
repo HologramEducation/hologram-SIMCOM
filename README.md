@@ -177,10 +177,12 @@ Lets you know how good your connection is.
 
 #### Return
 Returns an integer as follows:
-- **0** No reception
-- **1** Poor reception
-- **2** Good reception
-- **3** Great reception
+- **0** No signal
+- **1** Very poor signal strength
+- **2** Poor signal strength
+- **3** Good signal strength
+- **4** Very good signal strength
+- **5** Excellent signal strength
 
 #### Example
 ```c
