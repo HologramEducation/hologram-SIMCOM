@@ -59,10 +59,11 @@ private:
     // Send command, wait response or timeout, return [0-timeout,1-error,2-success]
     int _writeCommand(const char* command, const long timeout, const String successResp, const String errorResp);
     void _readSerial(); // reads/analyze modem serial, store read/inbound in globals, set states, etc
-    void _checkIfInbound();
+    void _checkIfInbound(); // check modem server for inbound messages
+    bool _connectNetwork(); // establish a connection to network and set cipstatus in prep to send/receive data
 
     // Server functions ---------------------------------------------------
-    // TODO: bool _resetServer(); // close, shutdown then restart server
+    // future versions
 
     // Client functions
     bool _sendMessage(const String data);

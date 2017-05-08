@@ -40,13 +40,17 @@ void loop() {
     // cellStrength() returns an int specifying the quality of your connection [0-none,1-poor,2-good,3-great]
     switch (Hologram.cellStrength()) {
         case 0:
-            Serial.println("Connection is non-existent");
+            Serial.println("No signal");
         case 1:
-            Serial.println("Connection is poor");
+            Serial.println("Very poor signal strength");
         case 2:
-            Serial.println("Connection is good");
+            Serial.println("Poor signal strength");
         case 3:
-            Serial.println("Connection is great");
+            Serial.println("Good signal strength");
+        case 4:
+            Serial.println("Very good signal strength");
+        case 5:
+            Serial.println("Excellent signal strength");
     }
 
     runOnce = false;
