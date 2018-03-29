@@ -12,14 +12,14 @@ HologramSIMCOM	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-begin	            KEYWORD2
-debug               KEYWORD2
-cellService         KEYWORD2
-cellStrength	    KEYWORD2
-send	            KEYWORD2
-sendSMS     	    KEYWORD2
+begin	KEYWORD2
+debug	KEYWORD2
+cellService	KEYWORD2
+cellStrength	KEYWORD2
+send	KEYWORD2
+sendSMS	KEYWORD2
 availableMessage	KEYWORD2
-readMessage	        KEYWORD2
+readMessage	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
