@@ -18,10 +18,10 @@ A [Hologram account and SIM Card](https://hologram.io/store/) is required to use
 
 ## Installation
 
-1. Download the latest version of the library from https://github.com/hologram-io/Hologram-SIMCOM/releases and save the file somewhere
-2. In the Arduino IDE, go to the Sketch -> Import Library -> Add Library... menu option
+1. Download the latest version of the library from https://github.com/HologramEducation/hologram-SIMCOM as a ZIP and save the file somewhere
+2. In the Arduino IDE, go to the Sketch -> Include Library -> Add .ZIP Library... menu option
 3. Find and select the zip file you saved in the first step.
-4. If successfully added you should now see **Hologram SIMCOM** listed among available libraries under Sketch -> Import.
+4. If successfully added you should now see **Hologram SIMCOM** listed among available libraries under Sketch -> Include Library.
 
 ## Getting Started
 
